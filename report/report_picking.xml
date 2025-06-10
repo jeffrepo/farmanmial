@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_picking_farmanimals" inherit_id="stock.report_picking">
+        <xpath expr="//table[1]/tbody" position="after">
+            <t t-set="cantidad_producto" t-value="0"/>
+            <t t-foreach="o.move_line_ids_without_package" t-as="ml">
+                <t t-set="cantidad_producto" t-value="cantcantidad_productoidad_donas + ml.quantity"/> 
+            </t>
+            <t t-if="cantidad_producto &gt; 0">
+                <tr>
+                    <td><strong>TOTAL PRODUCTO</strong></td>
+                    <td><strong><t t-esc="cantidad_producto"/></strong></td>
+                    <td><strong/></td>
+                </tr> 
+            </t>    
+        </xpath>
+   </template>
+</odoo>
